@@ -1,6 +1,7 @@
-require "log_parser/version"
+# frozen_string_literal: true
+
+require 'log_parser/version'
 
 module LogParser
   class Error < StandardError; end
-  # Your code goes here...
 end
