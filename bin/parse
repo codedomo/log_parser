@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'thor'
+require 'log_parser'
+
+class ParserCLI < Thor
+  desc 'file_path', 'log file path'
+  option :unique, type: :boolean, desc: 'returns unique visits', aliases: %w[-u --unique]
+
+  def self.exit_on_failure?
+    true
+  end
+
+  def file_path(path)
+    ::LogParser::CLIHandler.parse(path, options)
+  end
+
+  default_task :file_path
+end
+
+ParserCLI.start(ARGV)
